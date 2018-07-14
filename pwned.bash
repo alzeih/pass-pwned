@@ -57,7 +57,7 @@ check_sneaky_paths "$path"
 if [[ -f $passfile ]]; then
   cmd_pwned "$@"
 elif [[ -z $path ]]; then
-  die ""
+  die "Usage: $PROGRAM $COMMAND pass-name"
 else
   die "Error: $path is not in the password store."
 fi
