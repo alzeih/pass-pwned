@@ -5,13 +5,11 @@
 #set -o verbose
 #set -o xtrace
 
-local path="$1"
-local passfile="$PREFIX/$path.gpg"
 local useragent="Password-Store-bash-extension-pass-pwned"
 local contents sha1 sha1prefix sha1suffix result match count
-check_sneaky_paths "$path"
 
-if [[ -f $passfile ]]; then
+cmd_pwned() {
+
   contents=$($GPG -d "${GPG_OPTS[@]}" "$passfile" | head -n +1 | tr -d '\r')
   if [[ -z "$contents" ]]; then
     die "Failed to read password"
@@ -50,7 +48,14 @@ if [[ -f $passfile ]]; then
   fi
   echo "Password found in haveibeenpwned $count times"
   exit -1
+}
 
+path="$1"
+passfile="$PREFIX/$path.gpg"
+check_sneaky_paths "$path"
+
+if [[ -f $passfile ]]; then
+  cmd_pwned "$@"
 elif [[ -z $path ]]; then
   die ""
 else
