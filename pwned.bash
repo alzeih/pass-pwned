@@ -5,8 +5,7 @@
 #set -o verbose
 #set -o xtrace
 
-local useragent="Password-Store-bash-extension-pass-pwned"
-local contents sha1 sha1prefix sha1suffix result match count
+USER_AGENT="Password-Store-bash-extension-pass-pwned"
 
 cmd_pwned() {
 
@@ -30,7 +29,7 @@ cmd_pwned() {
     die "Failed to get sha1 suffix"
   fi
 
-  result=$(curl --fail --silent -A "$useragent" "https://api.pwnedpasswords.com/range/$sha1prefix")
+  result=$(curl --fail --silent -A "$USER_AGENT" "https://api.pwnedpasswords.com/range/$sha1prefix")
   if [[ -z "$result" ]]; then
     die "Failed to read from API"
   fi
