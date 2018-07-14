@@ -47,7 +47,7 @@ cmd_pwned() {
     exit -1
   fi
   echo "Password found in haveibeenpwned $count times"
-  exit -1
+  exit 1
 }
 
 path="$1"
