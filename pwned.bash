@@ -41,11 +41,11 @@ cmd_pwned() {
     exit 0
   fi
 
-  count=$(echo -n "$match" | cut -d ':' -f 2 | tr -d '\r')
+  count=$(echo -n "$match" | cut -s -d ':' -f 2 | tr -d '\r')
   if [[ -z "$count" ]]; then
-    echo "Password found in haveibeenpwned"
-    exit -1
+    echo "Warning: can't parse output. Count may be incorrect."
   fi
+
   echo "Password found in haveibeenpwned $count times"
   exit 1
 }
