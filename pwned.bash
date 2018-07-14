@@ -8,7 +8,7 @@
 local path="$1"
 local passfile="$PREFIX/$path.gpg"
 local useragent="Password-Store-bash-extension-pass-pwned"
-local contents sha1 prefix suffix result match count
+local contents sha1 sha1prefix sha1suffix result match count
 check_sneaky_paths "$path"
 
 if [[ -f $passfile ]]; then
@@ -22,22 +22,22 @@ if [[ -f $passfile ]]; then
     die "Failed to generate sha1"
   fi
 
-  prefix="${sha1:0:5}"
-  if [[ -z "$prefix" ]]; then
+  sha1prefix="${sha1:0:5}"
+  if [[ -z "$sha1prefix" ]]; then
     die "Failed to get sha1 prefix"
   fi
 
-  suffix="${sha1:5}"
-  if [[ -z "$suffix" ]]; then
+  sha1suffix="${sha1:5}"
+  if [[ -z "$sha1suffix" ]]; then
     die "Failed to get sha1 suffix"
   fi
 
-  result=$(curl --fail --silent -A "$useragent" "https://api.pwnedpasswords.com/range/$prefix")
+  result=$(curl --fail --silent -A "$useragent" "https://api.pwnedpasswords.com/range/$sha1prefix")
   if [[ -z "$result" ]]; then
     die "Failed to read from API"
   fi
 
-  match=$(echo "$result" | grep -i "$suffix" | tr -d '\r')
+  match=$(echo "$result" | grep -i "$sha1suffix" | tr -d '\r')
   if [[ -z "$match" ]]; then
     echo "Password not found in haveibeenpwned"
     exit 0
