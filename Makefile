@@ -3,7 +3,6 @@ PREFIX ?= /usr
 DESTDIR ?=
 LIBDIR ?= $(PREFIX)/lib
 SYSTEM_EXTENSION_DIR ?= $(LIBDIR)/password-store/extensions
-MANDIR ?= $(PREFIX)/share/man
 
 all:
 	@echo "pass-$(PROG) is a shell script and does not need compilation, it can be simply executed."
