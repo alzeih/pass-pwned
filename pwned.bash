@@ -34,6 +34,11 @@ cmd_pwned() {
     die "Failed to read from API"
   fi
 
+  invalid=$(grep -v -E "^[0-9A-F]{35}[:][0-9]+" <<<"$result")
+  if [ -n "$invalid" ]; then
+    die "API return result format not valid."
+  fi
+
   match=$(echo "$result" | grep -i "$sha1suffix" | tr -d '\r\n')
   if [ -z "$match" ]; then
     echo "Password not found in haveibeenpwned"
