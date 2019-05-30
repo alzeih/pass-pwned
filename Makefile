@@ -2,6 +2,7 @@ PROG ?= pwned
 PREFIX ?= /usr
 DESTDIR ?=
 LIBDIR ?= $(PREFIX)/lib
+MANDIR ?= $(PREFIX)/share/man
 SYSTEM_EXTENSION_DIR ?= $(LIBDIR)/password-store/extensions
 BASHCOMPDIR ?= /etc/bash_completion.d
 
@@ -14,6 +15,7 @@ all:
 	@echo "     password store"
 
 install:
+	@install -v -d "$(DESTDIR)$(MANDIR)/man1" && install -m 0644 -v man/pass-pwned.1 "$(DESTDIR)$(MANDIR)/man1/pass-$(PROG).1"
 	@install -v -d "$(DESTDIR)$(SYSTEM_EXTENSION_DIR)/"
 	@install -v -m 0755 pwned.bash "$(DESTDIR)$(SYSTEM_EXTENSION_DIR)/$(PROG).bash"
 	@install -v -d "$(DESTDIR)$(BASHCOMPDIR)/"
@@ -24,8 +26,9 @@ install:
 
 uninstall:
 	@rm -vrf \
-		"$(DESTDIR)$(SYSTEM_EXTENSION_DIR)/$(PROG).bash"
-		"$(DESTDIR)$(BASHCOMPDIR)/pass-$(PROG)"
+		"$(DESTDIR)$(SYSTEM_EXTENSION_DIR)/$(PROG).bash" \
+		"$(DESTDIR)$(BASHCOMPDIR)/pass-$(PROG)" \
+		"$(DESTDIR)$(MANDIR)/man1/pass-$(PROG).1"
 
 lint:
 	shellcheck -s bash $(PROG).bash

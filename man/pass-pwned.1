@@ -1,0 +1,52 @@
+.TH PASS-PWNED 1
+
+.SH NAME
+pass-pwned - Password-Store extension for Have I Been Pwned? Pwned
+Passwords v2 API
+
+.SH SYNOPSIS
+.BR pass
+.BR pwned
+[
+.I pass-name
+]
+
+.SH DESCRIPTION
+
+.B pass-pwned
+is a
+.BR pass (1)
+extension for checking passwords in a pasword-store against the
+Have I Been Pwned? Pwned Passwords v2 API
+
+.SH OPTIONS
+
+.TP
+.BR pass-name
+The password from the password-store to check against the Pwned Passwords
+v2 API.
+
+.SH ENVIRONMENT
+
+.TP
+.I PASSWORD_STORE_ENABLE_EXTENSIONS
+This environment variable must be set to "true" for extensions to be
+enabled.
+See
+.BR pass (1)
+for more information on using password-store extensions.
+
+.SH EXAMPLE
+
+.TP
+.B pass pwned <pass-name>
+.br
+Password found in haveibeenpwned 3303003 times
+
+.TP
+.B pass pwned <pass-name>
+.br
+Password not found in haveibeenpwned
+
+.SH SEE ALSO
+.BR pass (1)
