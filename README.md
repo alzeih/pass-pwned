@@ -12,7 +12,13 @@ This extension uses Troy Hunt's Have I Been Pwned? API <https://haveibeenpwned.c
 ## Installation
 For general password-store extension installation instructions see <https://www.passwordstore.org/#extensions>
 
-### Install as current user
+### Distribution install
+
+Fedora 29 and beyond have pass-pwned packaged.  You can install the package with:
+
+`sudo dnf install pass-pwned`
+
+### Manual install as current user
 
 ```
  echo 'export PASSWORD_STORE_ENABLE_EXTENSIONS="true"' >> ~/.bash_profile
