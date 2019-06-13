@@ -31,10 +31,14 @@ Fedora 29 and beyond have pass-pwned packaged.  You can install the package with
 
 ```
  $ pass pwned <pass-name>
-   Password found in haveibeenpwned 3303003 times
+   <pass-name>:3303003
 
  $ pass pwned <pass-name>
-   Password not found in haveibeenpwned
+   <pass-name>:0
+
+ $ pass pwned "**/*"
+   <pass-name>:3303003
+   <pass-name>:0
 ```
 
 ## Contributing

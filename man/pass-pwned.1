@@ -25,6 +25,8 @@ Have I Been Pwned? Pwned Passwords v2 API
 .BR pass-name
 The password from the password-store to check against the Pwned Passwords
 v2 API.
+This also accepts a quoted shell glob pattern which will check multiple
+passwords from the password-store
 
 .SH ENVIRONMENT
 
@@ -41,12 +43,19 @@ for more information on using password-store extensions.
 .TP
 .B pass pwned <pass-name>
 .br
-Password found in haveibeenpwned 3303003 times
+<pass-name>:3303003
 
 .TP
 .B pass pwned <pass-name>
 .br
-Password not found in haveibeenpwned
+<pass-name>:0
+
+.TP
+.B pass pwned \(dq**/*\(dq
+.br
+<pass-name>:3303003
+.br
+<pass-name>:0
 
 .SH SEE ALSO
 .BR pass (1)
