@@ -8,7 +8,8 @@
 shopt -s globstar
 shopt -s nullglob
 
-USER_AGENT="Password-Store-bash-extension-pass-pwned"
+VERSION="v0.1.0"
+USER_AGENT="Password-Store-bash-extension-pass-pwned $VERSION"
 
 format_result () {
   pass_name="$1"
