@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # pass pwned - Password Store Extension (https://www.passwordstore.org/)
-# uses Troy Hunt's ';--have i been pwned? API https://haveibeenpwned.com/API/v2
+# uses Troy Hunt's ';--have i been pwned? API https://haveibeenpwned.com/API/v3
 
 #set -o verbose
 #set -o xtrace

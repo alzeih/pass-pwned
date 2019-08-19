@@ -1,13 +1,13 @@
 # pass-pwned
-[Password-Store](https://www.passwordstore.org/) extension for [Have I Been Pwned?](https://haveibeenpwned.com/) Pwned Passwords v2 API
+[Password-Store](https://www.passwordstore.org/) extension for [Have I Been Pwned?](https://haveibeenpwned.com/) Pwned Passwords API
 
-This extension uses Troy Hunt's Have I Been Pwned? API <https://haveibeenpwned.com/API/v2>
+This extension uses Troy Hunt's Have I Been Pwned? API <https://haveibeenpwned.com/API/v3>
 
 > In order to protect the value of the source password being searched for,
 > Pwned Passwords also implements a k-Anonymity model that allows a password
 > to be searched for by partial hash. This allows the first 5 characters of a
 > SHA-1 password hash (not case-sensitive) to be passed to the API
-> <https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange>
+> <https://haveibeenpwned.com/API/v3#SearchingPwnedPasswordsByRange>
 
 ## Installation
 For general password-store extension installation instructions see <https://www.passwordstore.org/#extensions>
