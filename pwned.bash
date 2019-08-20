@@ -32,7 +32,7 @@ cmd_pwned() {
     die "Failed to read password"
   fi
 
-  sha1=$(echo -n "$contents" | sha1sum | cut -d ' ' -f 1 | tr -d '\r')
+  sha1=$(head -c -1 <<<"$contents" | sha1sum | cut -d ' ' -f 1 | tr -d '\r\n')
   if [ -z "$sha1" ]; then
     format_result "$1" "error"
     die "Failed to generate sha1"
@@ -62,13 +62,13 @@ cmd_pwned() {
     die "API return result format not valid."
   fi
 
-  match=$(echo "$result" | grep -i "$sha1suffix" | tr -d '\r\n')
+  match=$(head -c -1 <<<"$result" | grep -i -f <(head -c -1 <<<"$sha1suffix") | tr -d '\r\n')
   if [ -z "$match" ]; then
     format_result "$1" "0"
     return 0
   fi
 
-  count=$(echo -n "$match" | cut -s -d ':' -f 2 | tr -d '\r\n')
+  count=$(head -c -1 <<<"$match" | cut -s -d ':' -f 2 | tr -d '\r\n')
   if [ -z "$count" ]; then
     format_result "$1" "error"
     die "Cannot parse output from API"
